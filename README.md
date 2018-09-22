@@ -44,3 +44,18 @@ If you want to detect and respond to changes on one object, you’d use **observ
 var myObservableArray = ko.observableArray();    // Initially an empty array
 myObservableArray.push('Some value');            // Adds the value and notifies observers
 ```
+## Debugging assist
+These two helper functions can help a lot during debugging your knockout code. Use them on browser console. These helper functions allow you to identify the data associated with a DOM element:
+
+* ko.dataFor(element) - returns the data that was available for binding against the element
+* ko.contextFor(element) - returns the entire **binng context** that was available to the DOM element.
+
+## Managing ‘this’
+There is a popular convention for managing **this**. If your viewmodel’s constructor copies a reference to this into a different variable (traditionally called self), you can then use self throughout your viewmodel and don’t have to worry about it being redefined to refer to something else. For example:
+
+```javascript
+function AppViewModel() {
+    var self = this;
+    self.name = ko.observable('Swapnil');
+}
+```
