@@ -92,3 +92,16 @@ There are two ways to use the **if** binding.
     <div> The night is dark and Full of terrors. </div>
 <-- /ko -->
 ```
+## The "foreach" binding
+he foreach binding duplicates a section of markup for each entry in an array, and binds each copy of that markup to the corresponding array item. This is especially useful for rendering lists or tables.
+
+Assuming your array is an **observable array**, whenever you later add, remove, or re-order array entries, the binding will efficiently update the UI to match - inserting or removing more copies of the markup, or re-ordering existing DOM elements, without affecting any other DOM elements.
+
+```html
+<tbody data-bind="foreach: people">
+    <tr>
+        <td data-bind="text: firstName"></td>
+        <td data-bind="text: lastName"></td>
+    </tr>
+</tbody>
+```
