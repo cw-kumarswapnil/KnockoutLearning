@@ -59,12 +59,36 @@ function AppViewModel() {
     self.name = ko.observable('Swapnil');
 }
 ```
-## Binding Context
-A binding context is an object that holds data that you can reference from your bindings. While applying bindings, Knockout automatically creates and manages a hierarchy of binding contexts. The root level of the hierarchy refers to the viewModel parameter you supplied to **ko.applyBindings(viewModel)**. Then, each time you use a control flow binding such as *with* or *foreach*, that creates a child binding context that refers to the nested view model data.
+## Binding Syntax
+
+### The data-bind Syntax
+A binding consists of two items, the binding name and value, separated by a colon. Here is an example of a single, simple binding:
+```html
+Today's message is: <span data-bind="text: myMessage"></span>
+```
+
+### Binding Context
+A binding context is an object that holds data that you can reference from your bindings. While applying bindings, Knockout automatically creates and manages a hierarchy of binding contexts. The root level of the hierarchy refers to the viewModel parameter you supplied to **ko.applyBindings(viewModel)**. Then, each time you use a **control flow** binding such as *with* or *foreach*, that creates a child binding context that refers to the nested view model data.
 Bindings contexts offer the following special properties that you can reference in any binding:
 
 * $parent
 * $parents
-* root
-* component
-* data
+* $root
+* $component
+* $data
+
+## Control Flow
+
+### The "if" binding
+The if binding causes a section of markup to appear in your document conditionally. It  plays a similar role to the **visible** binding. The difference is that, with **visible**, the contained markup always remains in the DOM and always has its data-bind attributes applied - the **visible** binding just uses CSS to toggle the container element’s visiblity. The **if** binding, however, physically adds or removes the contained markup in your DOM, and only applies bindings to descendants if the expression is true. 
+There are two ways to use the **if** binding.
+
+```html
+<div data-bind="if: displayMessage">Here is a message. Astonishing.</div>
+```
+
+```html
+<-- ko if : displayMessage() -->
+    <div> The night is dark and Full of terrors. </div>
+<-- /ko -->
+```
