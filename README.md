@@ -1,6 +1,12 @@
 # KnockoutLearning
 Knockout Demos For Self Reference
 
+## For Bikewale Code use space before and after Knockout Comments
+```html
+<!--ko--> //wrong
+<!-- ko --> //right
+```
+
 ## Observables
 You need to declare your model properties as observables, because these are special JavaScript objects that can notify subscribers about changes, and can automatically detect dependencies.
 For example, rewrite the preceding view model object as follows:
